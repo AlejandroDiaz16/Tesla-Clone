@@ -1,24 +1,29 @@
 import React from 'react'
 import styled from "styled-components"
+import Fade from 'react-reveal/Fade';
 
 function Section({ title, description, backgroundImage, leftBtnText, rightBtnText}) {
   return (
     <Wrap bgImage={backgroundImage}>
-        <ItemText>
-            <h1>{ title }</h1> 
-            <p>{ description }</p>
-        </ItemText>
+        <Fade bottom>
+          <ItemText>
+              <h1>{ title }</h1> 
+              <p>{ description }</p>
+          </ItemText>
+        </Fade>
         <Buttons>
-          <ButtonGroup>
-            <LeftButton>
-              { leftBtnText }
-            </LeftButton>
-            { rightBtnText &&
-              <RightButton>
-                { rightBtnText }
-              </RightButton>
-            }
-          </ButtonGroup>
+          <Fade bottom>
+            <ButtonGroup>
+              <LeftButton>
+                { leftBtnText }
+              </LeftButton>
+              { rightBtnText &&
+                <RightButton>
+                  { rightBtnText }
+                </RightButton>
+              }
+            </ButtonGroup>
+          </Fade>
           <DownArrow src="/images/down-arrow.svg" />
         </Buttons>
     </Wrap>
@@ -28,22 +33,22 @@ function Section({ title, description, backgroundImage, leftBtnText, rightBtnTex
 export default Section
 
 const Wrap = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url('/images/model-s.jpg');
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; // vertical when flex direction clumn
-    align-items: center;
-    background-image: ${props => `url("/images/${props.bgImage}")`}
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('/images/model-s.jpg');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // vertical when flex direction clumn
+  align-items: center;
+  background-image: ${props => `url("/images/${props.bgImage}")`}
 `
 
 const ItemText = styled.div`
-    padding-top: 15vh;
-    text-align: center;
+  padding-top: 15vh;
+  text-align: center;
 `
 
 const ButtonGroup = styled.div`
